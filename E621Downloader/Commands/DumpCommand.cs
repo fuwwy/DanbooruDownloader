@@ -245,7 +245,7 @@ namespace E621Downloader.Commands
                 Extension = jsonObject.GetValue("file_ext")?.ToString() ?? "",
                 ImageUrl = jsonObject.GetValue("file_url")?.ToString() ?? "",
                 CreatedDate = DateTime.Parse(jsonObject.GetValue("created_at").ToString()),
-                UpdatedDate = jsonObject.GetValue("updated_at") != null ? DateTime.Parse(jsonObject.GetValue("updated_at").ToString()) : DateTime.Parse(jsonObject.GetValue("created_at").ToString()),
+                UpdatedDate = jsonObject.GetValue("updated_at").ToString().Length > 0 ? DateTime.Parse(jsonObject.GetValue("updated_at").ToString()) : DateTime.Parse(jsonObject.GetValue("created_at").ToString()),
                 IsDeleted = jsonObject.GetValue("is_deleted")?.ToObject<bool>() ?? false,
                 IsPending = jsonObject.GetValue("is_pending")?.ToObject<bool>() ?? false,
                 JObject = jsonObject,
