@@ -201,7 +201,7 @@ namespace E621Downloader.Commands
 
                                 if (post.ShouldSaveMetadata)
                                 {
-                                    File.WriteAllText(metadataPath, post.JObject.ToString());
+                                    File.WriteAllText(metadataPath, post.OriginalJObject.ToString());
                                 }
                             }, e =>
                             {
@@ -237,6 +237,7 @@ namespace E621Downloader.Commands
 
         static Post ConvertToPost(JObject jsonObject)
         {
+            JObject original = JObject.Parse(jsonObject.ToString());
             jsonObject = E621Utility.TranslatePostFormat(jsonObject);
             Post post = new Post()
             {
@@ -249,6 +250,7 @@ namespace E621Downloader.Commands
                 IsDeleted = jsonObject.GetValue("is_deleted")?.ToObject<bool>() ?? false,
                 IsPending = jsonObject.GetValue("is_pending")?.ToObject<bool>() ?? false,
                 JObject = jsonObject,
+                OriginalJObject = original,
             };
 
             if (post.UpdatedDate < post.CreatedDate)
@@ -324,6 +326,7 @@ namespace E621Downloader.Commands
             public bool IsPending;
             public bool IsDeleted;
             public JObject JObject;
+            public JObject OriginalJObject;
 
             public bool IsValid;
             public bool ShouldSaveMetadata;
