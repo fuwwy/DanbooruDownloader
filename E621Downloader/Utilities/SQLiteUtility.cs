@@ -39,9 +39,8 @@ CREATE TABLE IF NOT EXISTS posts
     has_children INTEGER,
     approver_id INTEGER,
     tag_count_general INTEGER,
-    tag_count_artist INTEGER,
-    tag_count_character INTEGER,
-    tag_count_copyright INTEGER,
+    tag_count_species INTEGER,
+    tag_count_meta INTEGER,
     file_size INTEGER,
     is_status_locked INTEGER,
     pool_string TEXT,
@@ -58,7 +57,6 @@ CREATE TABLE IF NOT EXISTS posts
     last_commented_at INTEGER,
     has_active_children INTEGER,
     bit_flags INTEGER,
-    tag_count_meta INTEGER,
     keeper_data TEXT,
     uploader_name TEXT,
     has_large INTEGER,
@@ -66,13 +64,13 @@ CREATE TABLE IF NOT EXISTS posts
     children_ids TEXT,
     is_favorited INTEGER,
     tag_string_general TEXT,
-    tag_string_character TEXT,
-    tag_string_copyright TEXT,
-    tag_string_artist TEXT,
+    tag_string_species TEXT,
     tag_string_meta TEXT,
     file_url TEXT,
     large_file_url TEXT,
-    preview_file_url TEXT
+    preview_file_url TEXT,
+    description TEXT,
+    comment_count INTEGER
 );";
                 command.ExecuteNonQuery();
 

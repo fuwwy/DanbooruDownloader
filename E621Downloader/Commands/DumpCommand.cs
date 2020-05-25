@@ -237,6 +237,7 @@ namespace E621Downloader.Commands
 
         static Post ConvertToPost(JObject jsonObject)
         {
+            jsonObject = E621Utility.TranslatePostFormat(jsonObject);
             Post post = new Post()
             {
                 Id = jsonObject.GetValue("id").ToString(),
