@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DanbooruDownloader.Utilities
+namespace E621Downloader.Utilities
 {
     public static class TaskUtility
     {

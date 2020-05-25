@@ -1,4 +1,4 @@
-﻿using DanbooruDownloader.Utilities;
+﻿using E621Downloader.Utilities;
 using Microsoft.Data.Sqlite;
 using Newtonsoft.Json.Linq;
 using NLog;
@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DanbooruDownloader.Commands
+namespace E621Downloader.Commands
 {
     public class DumpCommand
     {
@@ -22,7 +22,7 @@ namespace DanbooruDownloader.Commands
         {
             string tempFolderPath = Path.Combine(path, "_temp");
             string imageFolderPath = Path.Combine(path, "images");
-            string metadataDatabasePath = Path.Combine(path, "danbooru.sqlite");
+            string metadataDatabasePath = Path.Combine(path, "e621.sqlite");
             string lastPostJsonPath = Path.Combine(path, "last_post.json");
 
             PathUtility.CreateDirectoryIfNotExists(path);
@@ -46,7 +46,7 @@ namespace DanbooruDownloader.Commands
                     await TaskUtility.RunWithRetry(async () =>
                     {
                         Log.Info($"Downloading metadata ... ({startId} ~ )");
-                        postJObjects = await DanbooruUtility.GetPosts(startId);
+                        postJObjects = await E621Utility.GetPosts(startId);
                     }, e =>
                     {
                         Log.Error(e);
@@ -260,7 +260,7 @@ namespace DanbooruDownloader.Commands
 
         static string GetPostLocalMetadataPath(string imageFolderPath, Post post)
         {
-            return Path.Combine(imageFolderPath, post.Md5.Substring(0, 2), $"{post.Md5}-danbooru.json");
+            return Path.Combine(imageFolderPath, post.Md5.Substring(0, 2), $"{post.Md5}-e621.json");
         }
 
         static string GetPostLocalImagePath(string imageFolderPath, Post post)

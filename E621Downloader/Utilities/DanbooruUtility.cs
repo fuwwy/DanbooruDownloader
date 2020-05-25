@@ -7,9 +7,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DanbooruDownloader.Utilities
+namespace E621Downloader.Utilities
 {
-    public static class DanbooruUtility
+    public static class E621Utility
     {
         public static string GetPostsUrl(long startId)
         {

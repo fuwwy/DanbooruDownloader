@@ -1,9 +1,9 @@
-﻿using DanbooruDownloader.Commands;
+﻿using E621Downloader.Commands;
 using Microsoft.Extensions.CommandLineUtils;
 using Microsoft.Extensions.PlatformAbstractions;
 using System;
 
-namespace DanbooruDownloader
+namespace E621Downloader
 {
     class Program
     {
@@ -11,7 +11,7 @@ namespace DanbooruDownloader
         {
             CommandLineApplication application = new CommandLineApplication(true)
             {
-                FullName = "Danbooru Downloader",
+                FullName = "E621 Downloader",
             };
 
             application.HelpOption("-?|-h|--help");
